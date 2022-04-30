@@ -12,6 +12,8 @@ dataSet=dataSetHandler.ReadContinuousDataSet_multipleProperties("Linear Regressi
 bias=1
 weightArray=[bias,1,1]
 
+opt=OptimizeGD()
+print(opt.MeanNormalizaation(dataSet))
 lr=LinearRegression()
 J=lr.CostFunction_multiDemension(dataSet,weightArray)
 print(J)
