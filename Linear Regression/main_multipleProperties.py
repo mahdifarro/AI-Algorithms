@@ -1,10 +1,10 @@
 from DataSetHandler import DataSetHandler
 from LinearRegression import LinearRegression
 from DataVisualizer import DataVisualizer
+from OptimizeGD import OptimizeGD
 
-
-minXArray,maxXArray,minY,maxY=[0,0],[5,5],7,10
-sampleCount=40
+minXArray,maxXArray,minY,maxY=[-17,0],[5,20],7,10
+sampleCount=5
 
 dataSetHandler=DataSetHandler()
 #dataSetHandler.GenerateContinuousDataSet_multipleProperties("Linear Regression/ContinuousDataSet_multipleProperties 1.txt",minXArray,maxXArray,minY,maxY,sampleCount)
