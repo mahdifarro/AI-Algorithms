@@ -29,7 +29,7 @@ class LinearRegression:
 
 #region Dataset with multiple features
 
-    def CostFunction_multiDemension(self, dataSet, weightArray):
+    def CostFunction_multiDemensions(self, dataSet, weightArray):
         m=len(dataSet)
         x=dataSet[:,:-1]
         onesArray=np.ones((m,1))
@@ -39,7 +39,7 @@ class LinearRegression:
         cost=(1/(2*m))*np.sum(np.square(y-predictions))
         return cost
 
-    def GradientDescent_multiDimension(self, dataSet, weightArray, alpha=0.00001, iterations=100000):
+    def GradientDescent_multiDimensions(self, dataSet, weightArray, alpha=0.00001, iterations=100000):
         jHistory=[]
         m=len(dataSet)
         x=dataSet[:,:-1]
@@ -47,7 +47,7 @@ class LinearRegression:
         x = np.append(onesArray,x,axis=1)
         y=dataSet[:,-1]
         for it in range(iterations):
-            jHistory.append(self.CostFunction_multiDemension(dataSet, weightArray))
+            jHistory.append(self.CostFunction_multiDemensions(dataSet, weightArray))
             
             predictions=x.dot(np.array(weightArray))
             weightArray-=np.sum((alpha/m)*(x.T.dot(predictions-y)))

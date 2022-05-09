@@ -1,7 +1,11 @@
 from DataSetHandler import DataSetHandler
+
 from LinearRegression import LinearRegression
-from DataVisualizer import DataVisualizer
 from OptimizeGD import OptimizeGD
+
+from DataVisualizer import DataVisualizer
+
+from NormalEquation import NormalEquation
 
 minXArray,maxXArray,minY,maxY=[-17,0],[5,20],7,10
 sampleCount=5
@@ -13,14 +17,18 @@ bias=1
 weightArray=[bias,1,1]
 
 opt=OptimizeGD()
-print(opt.MeanNormalizaation(dataSet))
+#print(opt.MeanNormalizaation(dataSet))
 lr=LinearRegression()
-J=lr.CostFunction_multiDemension(dataSet,weightArray)
-print(J)
-jHistory,weightArray=lr.GradientDescent_multiDimension(dataSet,weightArray)
-J=lr.CostFunction_multiDemension(dataSet,weightArray)
-print(J)
-
+J=lr.CostFunction_multiDemensions(dataSet,weightArray)
+#print(J)
+jHistory,weightArray=lr.GradientDescent_multiDimensions(dataSet,weightArray)
+J=lr.CostFunction_multiDemensions(dataSet,weightArray)
+#print(J)
 print(weightArray)
+
+ne=NormalEquation()
+NE_weights=ne.NormalEquation_multiDimensions(dataSet)
+print(NE_weights)
+
 dataVisualizer=DataVisualizer()
 dataVisualizer.ShowJHistory(jHistory)
