@@ -5,7 +5,7 @@ from os.path import exists
 
 
 class DataSetHandler:
-#region Dataset with single feature
+#region Continuous Dataset with single feature
     def GenerateContinuousDataSet_oneProperty(self, filename, minX, maxX, minY, maxY, sampleCount):
         if(exists(filename)):
             raise Exception("File [{name}] is already created".format(name=filename))
@@ -36,7 +36,7 @@ class DataSetHandler:
 
 #endregion
 
-#region Dataset with single feature
+#region Continuous Dataset with multiple features
 
     def GenerateContinuousDataSet_multipleProperties(self, filename, minXArray, maxXArray, minY, maxY, sampleCount):
         if(exists(filename)):
