@@ -13,8 +13,8 @@ class DataSetHandler:
         file.write("x\ty\n")
 
         for i in range(0,sampleCount):
-            x=random.gauss((minX+maxX)/2,(minX+maxX)/2)
-            y=random.gauss((minY+maxY)/2,(minY+maxY)/2)
+            x=random.gauss((minX+maxX)/2,(maxY-minY)/2)
+            y=random.gauss((minY+maxY)/2,(maxY+minY)/2)
             file.write("{x}\t{y}\n".format(x=x, y=y))
         file.close()
 
