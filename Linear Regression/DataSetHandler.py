@@ -87,3 +87,36 @@ class DataSetHandler:
         return newDataSet
 
 #endregion
+
+#region Discrete Dataset with single feature
+    def GenerateDiscreteDataSet_oneProperty(self, filename, minX0, maxX0, minX1, maxX1, sampleCount):
+        if(exists(filename)):
+            raise Exception("File [{name}] is already created".format(name=filename))
+        file = open(filename, "w")
+        file.write("x\ty\n")
+    
+        for i in range(0,sampleCount):
+            y=random.randint(0,1)
+            if(y==1):
+                x=random.gauss((minX0+maxX0)/2,(minX0+maxX0)/2)
+            else:
+                x=random.gauss((minX1+maxX1)/2,(minX1+maxX1)/2)
+            file.write("{x}\t{y}\n".format(x=x, y=y))
+        file.close()
+
+    def ReadDiscreteDataSet_oneProperty(self, filename):
+        dataSet=[]
+
+        if(exists(filename)==False):
+            raise Exception("File [{name}] doesn't exist".format(name=filename))
+        file = open(filename, "r")
+
+        for line in file.readlines():
+            splittedLine=line.split('\t')
+            if(splittedLine[0]=="x"):
+                continue
+            data=Data(float(splittedLine[0]),float(splittedLine[1]))
+            dataSet.append(data)
+
+        return dataSet
+#endregion
