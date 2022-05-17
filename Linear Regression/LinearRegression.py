@@ -2,9 +2,9 @@ import numpy as np
 
 class LinearRegression:
 
-#region Dataset with single feature
+#region Continuous Dataset with single feature
 
-    def CostFunction_2D(self, dataSet, weightArray):
+    def CostFunction_Continuous2D(self, dataSet, weightArray):
         m=len(dataSet)
         x=np.array(dataSet)[:,0]
         y=np.array(dataSet)[:,-1]
@@ -12,13 +12,13 @@ class LinearRegression:
         cost=(1/(2*m))*np.sum(np.square(y-predictions))
         return cost
 
-    def GradientDescent_2D(self, dataSet, weightArray, alpha=0.0001, iterations=100):
+    def GradientDescent_Continuous2D(self, dataSet, weightArray, alpha=0.0001, iterations=100):
         jHistory=[]
         m=len(dataSet)
         x=np.array(dataSet)[:,0]
         y=np.array(dataSet)[:,-1]
         for it in range(iterations):
-            jHistory.append(self.CostFunction_2D(dataSet, weightArray))
+            jHistory.append(self.CostFunction_Continuous2D(dataSet, weightArray))
             
             predictions=x.dot(weightArray[0])+weightArray[1]
             weightArray[1]=weightArray[1]-np.sum((alpha/m)*(predictions-y))
@@ -27,9 +27,9 @@ class LinearRegression:
 
 #endregion
 
-#region Dataset with multiple features
+#region Continuous Dataset with multiple features
 
-    def CostFunction_multiDemension(self, dataSet, weightArray):
+    def CostFunction_ContinuousMultiDemensions(self, dataSet, weightArray):
         m=len(dataSet)
         x=dataSet[:,:-1]
         onesArray=np.ones((m,1))
@@ -39,7 +39,7 @@ class LinearRegression:
         cost=(1/(2*m))*np.sum(np.square(y-predictions))
         return cost
 
-    def GradientDescent_multiDimension(self, dataSet, weightArray, alpha=0.00001, iterations=100000):
+    def GradientDescent_ContinuousMultiDimensions(self, dataSet, weightArray, alpha=0.00001, iterations=100000):
         jHistory=[]
         m=len(dataSet)
         x=dataSet[:,:-1]
@@ -47,7 +47,7 @@ class LinearRegression:
         x = np.append(onesArray,x,axis=1)
         y=dataSet[:,-1]
         for it in range(iterations):
-            jHistory.append(self.CostFunction_multiDemension(dataSet, weightArray))
+            jHistory.append(self.CostFunction_ContinuousMultiDemensions(dataSet, weightArray))
             
             predictions=x.dot(np.array(weightArray))
             weightArray-=np.sum((alpha/m)*(x.T.dot(predictions-y)))
